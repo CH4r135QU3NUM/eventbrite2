@@ -1,0 +1,35 @@
+<% if user_signed_in? %>
+<h1>Créer votre évent !</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+  <p> <%= label_tag 'name', "Quel model recherche tu ? Un H, une F ou peu importe"  %> </p>
+  <p> <%= text_field_tag(:name, "Model Mixte cheveux mi-long") %> </p>
+
+  <p> <%= label_tag 'description', "A quel heure se passe ton évènement ?" %> </p>
+  <p> <%= text_field_tag(:description) %> </p>
+
+  <p> <%= label_tag 'place', "Dans quelle ville se déroule t-il ?" %> </p>
+  <p> <%= text_field_tag(:place) %> </p>
+
+  <p> <%= label_tag 'place', "Quand se déroule ta prestation ?" %> </p>
+  <p> <%= date_field_tag(:date) %> </p>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<p> <%= submit_tag 'Je crée mon event', class: "btn btn-primary"%></p>
+
+  </div>
+</div>
+
+
+
+<% else %>
+<h1>Oh nooon !</h1> <h2> Vous n'êtes pas connécté </h2>
+<h3>Veuillez vous connécter pour créer un event :)</h3>
+          <li><%= link_to "Se connecter", new_user_session_path %></li>
+        <% end %>   
+
+

@@ -7,9 +7,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%= favicon_link_tag 'noun_3169.png' %>
   </head>
 
   <body>
+   <%= render 'layouts/header' %>
+
     <%= yield %>
   </body>
 </html>
