@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
-  def index
-  	@events = Event.all
-  end
+  
 
 def create
 
@@ -20,12 +18,13 @@ def create
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def new
   	@event = Event.new
   end
-end
+
 
 
 
@@ -33,17 +32,18 @@ end
   def suscribe
     @event = Event.find(params[:id])
     if 
-    @event.attendees.include? current_user
+    @event.event_attendees.include? current_user.id
     flash[:error] = "Tu participes déjà à l'événement !" 
     redirect_to @event
     else
-    @event.attendees << current_user
+    @event.event_attendees << current_user.id
     flash[:success] = "Tu participes à l'événement !" 
     redirect_to @event
     end
 
     private
   	def event_params
-      params.permit(:name, :description, :date, :place)
+      params.permit(:price, :description, :date, :place)
   	end
   end
+end

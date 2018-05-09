@@ -1,10 +1,60 @@
-<h1>Bienvenue sur OpenBeauty</h1>
+<h4>Obtiens une coupe de cheveux gratuite en t'inscrivant aux évènements près de chez toi et découvre ainsi les nouveaux talents du monde de la beauté.</h4>
 
+<h3>Liste des sessions de coiffure gratuite</h3>
+ 
+<table class="table table-striped">
+  <tr>
+    <th>Sexe / Genre</th>
+    <th>Date</th>
+    <th>Lieu</th>
+    <th>Caution en cas d'annulation</th>
+    <th></th>
 
+  </tr>
+ <%@events = Event.all %>
+  <% @events.each do |event|%> 
+  <% if event.date >= Date.today %>
+    <tr>
+      <td><%= event.description %></td>
+      <td><%= event.date.strftime("%d-%m-%Y") %></td>
+      <td><%= event.place %></td>
+      <td><%= event.price %>€</td>
+      <td><%= link_to "j'y vais", event_path(event) %></td>
 
- <% if user_signed_in? %>
-<li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
-<% else %>
-<li> <%= link_to "Sign In", new_user_session_path %></li>
-<li><%= link_to "Sign Up", new_user_registration_path %></li>
+    </tr>
+  <% end %>
 <% end %>
+
+</table>
+
+<h4> Evénements passés </h4>
+
+<table class="table table-striped">
+  <tr>
+    <th>Sexe / Genre</th>
+    <th>Date</th>
+    <th>Lieu</th>
+    <th>Caution en cas d'annulation</th>
+    <th></th>
+
+  </tr>
+ 
+  <% @events.each do |event|%> 
+  <% if event.date < Date.today %>
+    <tr>
+     <td><%= event.description %></td>
+      <td><%= event.date.strftime("%d-%m-%Y") %></td>
+      <td><%= event.place %></td>
+      <td><%= event.price %>€</td>
+
+      
+
+    </tr>
+  <% end %>
+<% end %>
+
+</table>
+
+
+
+

@@ -1,2 +1,42 @@
-<h1>Liste des membres</h1>
-<%= current_user %>
+
+<% if user_signed_in? %>
+            
+                <h1>Récapitulatif </h1>
+<h3>model recherché : <%= @event.description %> </h3>
+
+<% if @event.price == 0 %>
+<h3>Il n'y a pas de caution pour cet évènement</h3>
+<% else %>
+<h3> Pssit n'oublie pas ton rendez-vous GRATUIT, si tu ne viens pas comme convenu ta caution de : <%= @event.price %>€ sera facturée</h3>
+<% end %>
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <p> <%= @event.price %></p>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount="@event.price"
+          data-locale="auto"></script>
+<% end %>
+
+
+        <% else %>
+
+        <h1>Oh un inconnu !</h1>
+        <h3>Merci de te connecter ou t'inscrire pour accéder à l'évènement</h3>
+          
+        <% end %>      
+            
+
+
+
+

@@ -5,18 +5,16 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     
-  <p> <%= label_tag 'name', "Quel model recherche tu ? Un H, une F ou peu importe"  %> </p>
-  <p> <%= text_field_tag(:name, "Model Mixte cheveux mi-long") %> </p>
-
-  <p> <%= label_tag 'description', "A quel heure se passe ton évènement ?" %> </p>
-  <p> <%= text_field_tag(:description) %> </p>
+  
+  <p> <%= label_tag 'description', "Quel model recherche tu ? Un H, une F ou peu importe" %> </p>
+  <p> <%= text_field_tag(:description, "Model Mixte cheveux mi-long") %> </p>
 
   <p> <%= label_tag 'place', "Dans quelle ville se déroule t-il ?" %> </p>
   <p> <%= text_field_tag(:place) %> </p>
 
   <p> <%= label_tag 'date', "Quand se déroule ta prestation ?" %> </p>
   <p> <%= date_field_tag(:date) %> </p>
-  <p> <%= label_tag 'price', "Combien coûte l'évènement en € ?" %> </p>
+  <p> <%= label_tag 'price', "Combien d'euros vas tu faire payer ta prestation si ton model te met un lapin ?" %> </p>
   <p> <%= number_field_tag(:price) %> </p>
 
   </div>
